@@ -14,17 +14,17 @@ const highlights = [
       <h2 class="section-title reveal">Quem trabalha no seu projeto</h2>
 
       <div class="about-grid reveal">
-        <div class="about-photo" aria-label="Foto profissional de Andres Hernandez">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <circle cx="50" cy="38" r="18" fill="currentColor" opacity="0.18" />
-            <path
-              d="M20 90 Q50 60 80 90 Z"
-              fill="currentColor"
-              opacity="0.18"
-            />
-          </svg>
-          <span class="about-photo-caption">Foto profissional</span>
-        </div>
+        <picture class="about-photo">
+          <source srcset="/me.webp" type="image/webp" />
+          <img
+            src="/me.jpg"
+            alt="Andres Hernandez, Frontend Performance Specialist"
+            width="600"
+            height="600"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
 
         <div class="about-text">
           <p>
@@ -74,39 +74,47 @@ const highlights = [
 }
 
 .about-photo {
+  display: block;
   width: 100%;
   aspect-ratio: 1;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--text-dim);
-  font-size: 14px;
-  position: relative;
   overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 60px -30px rgba(163, 230, 53, 0.35);
+  transition: transform 0.4s var(--ease-out-quart),
+              box-shadow 0.4s ease;
 }
 
-.about-photo::before {
+.about-photo::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 30%, var(--accent-soft), transparent 60%);
+  background: linear-gradient(
+    180deg,
+    transparent 60%,
+    rgba(10, 10, 10, 0.4) 100%
+  );
   pointer-events: none;
 }
 
-.about-photo svg {
-  width: 60%;
-  height: auto;
-  color: var(--text-dim);
+.about-photo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px -28px rgba(163, 230, 53, 0.5);
 }
 
-.about-photo-caption {
-  position: relative;
-  z-index: 1;
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s var(--ease-out-quart);
+}
+
+.about-photo:hover img {
+  transform: scale(1.03);
 }
 
 .about-text p {

@@ -8,6 +8,7 @@
     "generate": "node scripts/generate-og.mjs && nuxt generate",
     "preview": "nuxt preview",
     "og": "node scripts/generate-og.mjs",
+    "photo": "node scripts/generate-photo.mjs",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {

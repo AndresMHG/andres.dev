@@ -20,3 +20,6 @@ node_modules
 # Local IDE / Claude
 .claude/
 *.local.json
+
+# Photo source (not optimized — only me.webp/me.jpg are committed)
+/public/me-source.*
