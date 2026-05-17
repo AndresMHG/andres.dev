@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#a3e635" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#a3e635" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a3e635"/>
+      <stop offset="100%" stop-color="#bef264"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1c1c"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+    <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Top-left logo -->
+  <g transform="translate(72, 72)">
+    <circle cx="10" cy="10" r="10" fill="#a3e635" filter="url(#glowFilter)" opacity="0.6"/>
+    <circle cx="10" cy="10" r="10" fill="#a3e635"/>
+    <text x="32" y="16" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="600" fill="#fafafa">
+      andres<tspan fill="#a1a1aa">.dev</tspan>
+    </text>
+  </g>
+
+  <!-- Top-right badge -->
+  <g transform="translate(910, 65)">
+    <rect width="218" height="36" rx="18" fill="none" stroke="#3f3f3f" stroke-width="1"/>
+    <circle cx="20" cy="18" r="4" fill="#a3e635"/>
+    <text x="32" y="23" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#c4c4cc">
+      Disponível para projetos
+    </text>
+  </g>
+
+  <!-- Main title -->
+  <g transform="translate(72, 240)">
+    <text font-family="Inter, system-ui, sans-serif" font-size="68" font-weight="800" fill="#fafafa" letter-spacing="-2">
+      <tspan x="0" dy="0">Frontend</tspan>
+      <tspan x="0" dy="78"><tspan fill="url(#accent)">Performance</tspan> Specialist</tspan>
+    </text>
+  </g>
+
+  <!-- Subtitle -->
+  <text x="72" y="438" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="500" fill="#c4c4cc">
+    Vue.js · Nuxt.js · Lighthouse 100/100 · Core Web Vitals
+  </text>
+
+  <!-- Divider -->
+  <line x1="72" y1="492" x2="1128" y2="492" stroke="#262626" stroke-width="1"/>
+
+  <!-- Bottom row: name + scores -->
+  <g transform="translate(72, 540)">
+    <text font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#fafafa">
+      Andres Hernandez
+    </text>
+    <text y="26" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#8a8a93">
+      6+ anos · Curitiba, BR · Vue/Nuxt em produção
+    </text>
+  </g>
+
+  <!-- Score circles bottom-right -->
+  <g transform="translate(720, 528)">
+    <g transform="translate(0,0)">
+      <circle cx="28" cy="28" r="26" fill="none" stroke="#262626" stroke-width="3"/>
+      <circle cx="28" cy="28" r="26" fill="none" stroke="#a3e635" stroke-width="3"
+        stroke-dasharray="156.6 163" stroke-dashoffset="0" transform="rotate(-90 28 28)"/>
+      <text x="28" y="33" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#a3e635">96</text>
+    </g>
+    <g transform="translate(96,0)">
+      <circle cx="28" cy="28" r="26" fill="none" stroke="#a3e635" stroke-width="3"/>
+      <text x="28" y="33" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#a3e635">100</text>
+    </g>
+    <g transform="translate(192,0)">
+      <circle cx="28" cy="28" r="26" fill="none" stroke="#262626" stroke-width="3"/>
+      <circle cx="28" cy="28" r="26" fill="none" stroke="#a3e635" stroke-width="3"
+        stroke-dasharray="160.1 163" stroke-dashoffset="0" transform="rotate(-90 28 28)"/>
+      <text x="28" y="33" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#a3e635">98</text>
+    </g>
+    <g transform="translate(288,0)">
+      <circle cx="28" cy="28" r="26" fill="none" stroke="#a3e635" stroke-width="3"/>
+      <text x="28" y="33" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#a3e635">100</text>
+    </g>
+  </g>
+
+  <!-- Bottom-right tagline -->
+  <text x="1128" y="568" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" fill="#71717a">
+    andres.dev
+  </text>
+</svg>

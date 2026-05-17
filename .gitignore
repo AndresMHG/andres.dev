@@ -1,0 +1,22 @@
+# Nuxt
+.nuxt
+.output
+.data
+dist
+.cache
+
+# Node
+node_modules
+*.log
+
+# Editor
+.vscode
+.idea
+
+# Env
+.env
+.env.local
+
+# Local IDE / Claude
+.claude/
+*.local.json
