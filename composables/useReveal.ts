@@ -1,37 +1,52 @@
 /**
- * Attach a single, shared IntersectionObserver that toggles `.is-visible`
- * on any element with class `.reveal` once it enters the viewport.
- * Runs only client-side to keep the SSR/static output free of side effects.
+ * Reveal-on-scroll animations driven by a single shared IntersectionObserver.
+ *
+ * Re-observes new `.reveal` elements after every client-side navigation
+ * (Nuxt's `page:finish` hook) so SPA route changes — e.g. /blog → / —
+ * don't leave sections stuck at opacity 0.
+ *
+ * Runs only on the client.
  */
 export const useReveal = () => {
   if (import.meta.server) return
 
-  onMounted(() => {
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches
+  let observer: IntersectionObserver | null = null
 
-    const targets = document.querySelectorAll<HTMLElement>('.reveal')
+  const observeAll = () => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const targets = document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible)')
 
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    if (reduced || !('IntersectionObserver' in window)) {
       targets.forEach((el) => el.classList.add('is-visible'))
       return
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible')
-            observer.unobserve(entry.target)
+    if (!observer) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible')
+              observer!.unobserve(entry.target)
+            }
           }
-        }
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    )
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      )
+    }
 
-    targets.forEach((el) => observer.observe(el))
+    targets.forEach((el) => observer!.observe(el))
+  }
 
-    onBeforeUnmount(() => observer.disconnect())
+  const schedule = () => nextTick(observeAll)
+
+  onMounted(schedule)
+
+  const nuxtApp = useNuxtApp()
+  nuxtApp.hook('page:finish', schedule)
+
+  onBeforeUnmount(() => {
+    observer?.disconnect()
+    observer = null
   })
 }
