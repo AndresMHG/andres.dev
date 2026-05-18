@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const SITE_URL = 'https://andresdev.vercel.app'
+const SITE_URL = 'https://andres-dev-drab.vercel.app'
 const OG_IMAGE = `${SITE_URL}/og-image.png`
 
 export default defineNuxtConfig({

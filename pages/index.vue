@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { SITE } from '~/utils/site'
 
-const SITE_URL = 'https://andresdev.vercel.app'
+const SITE_URL = 'https://andres-dev-drab.vercel.app'
 const OG_IMAGE = `${SITE_URL}/og-image.png`
 
 useSeoMeta({
