@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { SITE } from '~/utils/site'
+import {
+  personSchema,
+  webSiteSchema,
+  faqPageSchema,
+  jsonLdScript,
+} from '~/composables/useStructuredData'
 
-const SITE_URL = 'https://andres-dev-drab.vercel.app'
-const OG_IMAGE = `${SITE_URL}/og-image.png`
+const OG_IMAGE = `${SITE.url}/og-image.png`
 
 useSeoMeta({
   title: 'Andres Hernandez — Frontend Performance Specialist (Vue/Nuxt)',
@@ -13,7 +18,7 @@ useSeoMeta({
     'Vue.js e Nuxt.js para times que levam performance a sério. Auditoria, sprint de otimização, migração Nuxt 2 → 3.',
   ogType: 'website',
   ogLocale: 'pt_BR',
-  ogUrl: SITE_URL,
+  ogUrl: SITE.url,
   ogImage: OG_IMAGE,
   ogImageWidth: 1200,
   ogImageHeight: 630,
@@ -27,25 +32,9 @@ useSeoMeta({
 
 useHead({
   script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: SITE.name,
-        jobTitle: 'Frontend Performance Specialist',
-        url: `${SITE_URL}/`,
-        email: `mailto:${SITE.email}`,
-        sameAs: [SITE.linkedin],
-        knowsAbout: ['Vue.js', 'Nuxt.js', 'Web Performance', 'Core Web Vitals', 'SEO'],
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Curitiba',
-          addressRegion: 'PR',
-          addressCountry: 'BR',
-        },
-      }),
-    },
+    jsonLdScript(personSchema()),
+    jsonLdScript(webSiteSchema()),
+    jsonLdScript(faqPageSchema()),
   ],
 })
 </script>

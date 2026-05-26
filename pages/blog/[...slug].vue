@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import { SITE } from '~/utils/site'
+import {
+  blogPostingSchema,
+  breadcrumbListSchema,
+  jsonLdScript,
+} from '~/composables/useStructuredData'
+
 const route = useRoute()
 const path = route.path
 
@@ -10,16 +17,42 @@ if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post não encontrado', fatal: true })
 }
 
+const postUrl = `${SITE.url}${path}`
+
 useSeoMeta({
   title: `${post.value.title} · andres.dev`,
   description: post.value.description,
   ogTitle: post.value.title,
   ogDescription: post.value.description,
   ogType: 'article',
+  ogUrl: postUrl,
   articleAuthor: post.value.author,
   articlePublishedTime: post.value.date,
   twitterTitle: post.value.title,
   twitterDescription: post.value.description,
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: postUrl }],
+  script: [
+    jsonLdScript(
+      blogPostingSchema({
+        title: String(post.value.title),
+        description: post.value.description ? String(post.value.description) : undefined,
+        url: postUrl,
+        datePublished: String(post.value.date),
+        author: post.value.author ? String(post.value.author) : undefined,
+        keywords: Array.isArray(post.value.tags) ? post.value.tags : undefined,
+      })
+    ),
+    jsonLdScript(
+      breadcrumbListSchema([
+        { name: 'Home', url: `${SITE.url}/` },
+        { name: 'Blog', url: `${SITE.url}/blog` },
+        { name: String(post.value.title), url: postUrl },
+      ])
+    ),
+  ],
 })
 
 const formatDate = (d: string) =>

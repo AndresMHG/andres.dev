@@ -1,5 +1,6 @@
 export const SITE = {
   name: 'Andres Hernandez',
+  url: 'https://andres-dev-drab.vercel.app',
   email: 'andr3sm1guel@gmail.com',
   linkedin:
     'https://www.linkedin.com/in/andres-miguel-hernandez-garcia-154169377/',

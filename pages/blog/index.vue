@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import { SITE } from '~/utils/site'
+import {
+  blogSchema,
+  breadcrumbListSchema,
+  jsonLdScript,
+} from '~/composables/useStructuredData'
+
 const { data: posts } = await useAsyncData('blog-list', () =>
   queryContent('/blog')
     .only(['_path', 'title', 'description', 'date', 'tags', 'readingTime'])
@@ -13,6 +20,31 @@ useSeoMeta({
   ogTitle: 'Blog — Performance Vue/Nuxt · andres.dev',
   ogDescription:
     'Posts técnicos sobre performance Vue.js e Nuxt.js, Core Web Vitals e SEO técnico.',
+})
+
+const blogUrl = `${SITE.url}/blog`
+
+useHead({
+  link: [{ rel: 'canonical', href: blogUrl }],
+  script: [
+    jsonLdScript(
+      blogSchema({
+        url: blogUrl,
+        posts: (posts.value ?? []).map((p) => ({
+          title: String(p.title ?? ''),
+          url: `${SITE.url}${p._path}`,
+          description: p.description ? String(p.description) : undefined,
+          datePublished: String(p.date ?? ''),
+        })),
+      })
+    ),
+    jsonLdScript(
+      breadcrumbListSchema([
+        { name: 'Home', url: `${SITE.url}/` },
+        { name: 'Blog', url: blogUrl },
+      ])
+    ),
+  ],
 })
 
 const formatDate = (d: string) =>

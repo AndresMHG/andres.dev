@@ -1,0 +1,37 @@
+# Andres Hernandez — Frontend Performance Specialist
+
+> Desenvolvedor frontend especializado em performance Vue.js e Nuxt.js. Atende SaaS brasileiros com foco em Core Web Vitals, Lighthouse 90+, migração Nuxt 2 → 3 e SEO técnico. Baseado em Curitiba, PR — Brasil.
+
+## Sobre
+
+- **Nome:** Andres Hernandez
+- **Cargo:** Frontend Performance Specialist (Vue.js / Nuxt.js)
+- **Localização:** Curitiba, PR, Brasil
+- **Idiomas:** Português (nativo), Espanhol (nativo)
+- **Stack principal:** Vue.js, Nuxt.js, TypeScript, Core Web Vitals, SEO técnico
+- **Stack secundário:** React, Laravel, Node.js, AWS
+- **Modelo de contratação:** MEI (nota fiscal), projetos pontuais, sprints de auditoria, retainers mensais
+
+## Serviços
+
+- Auditoria de performance (1 semana, PDF + call de 30 min)
+- Sprint de otimização (Core Web Vitals, Lighthouse)
+- Migração Nuxt 2 → 3
+- Consultoria pontual por hora ou pacote
+- SEO técnico para apps Vue/Nuxt
+
+## Páginas
+
+- [Home](https://andres-dev-drab.vercel.app/): apresentação, serviços, processo, cases, FAQ, contato
+- [Blog](https://andres-dev-drab.vercel.app/blog): posts técnicos sobre performance Vue/Nuxt
+
+## Posts
+
+- [Lighthouse 42 a 94: o playbook](https://andres-dev-drab.vercel.app/blog/lighthouse-42-a-94-playbook)
+- [Core Web Vitals para SaaS brasileiro](https://andres-dev-drab.vercel.app/blog/core-web-vitals-saas-brasileiro)
+
+## Contato
+
+- **Email:** andr3sm1guel@gmail.com
+- **WhatsApp:** +55 41 98864-8321
+- **LinkedIn:** https://www.linkedin.com/in/andres-miguel-hernandez-garcia-154169377/
